@@ -25,3 +25,12 @@ nav{
     max-width: 1200px;
     margin: auto;
 }
+
+#search_input{
+    max-width: 400px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 8px;
+    color: #333;
+}
