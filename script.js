@@ -18,7 +18,7 @@ async function SearchRandomNews(){
 async () => {
     try{
        const articles  = await SearchRandomNews();
-       console.log(articles);
+       displayBlogs(articles);
         
        } 
        catch(error){
@@ -26,3 +26,21 @@ async () => {
        }
     }
 
+function displayBlogs(articles){
+    blogContainer.innerHTML = "";
+    articles.forEach((articles) => {
+        const blogCard = document.createElement("div");
+        blogCard.classList.add("blog-card");
+        const img = document.createElement("img");
+        img.src = "article.urltoImage";
+        img.alt = "article.title";
+        const title = document.createElement("h2");
+        title.textContent = articles.title;
+        const description = document.createElement("p");
+        description.textContent = articles.description;
+        blogCard.appendChild(description);
+        blogCard.appendChild(h2)
+        blogCard.appendChild(title)
+        blogContainer.appendChild(blogCard)
+    });
+}
