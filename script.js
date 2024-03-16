@@ -14,6 +14,7 @@ async function SearchRandomNews(){
     }
 }
 
+
 (async () => {
     try{
        const articles  = await SearchRandomNews();
@@ -31,15 +32,15 @@ function displayBlogs(articles){
         const blogCard = document.createElement("div");
         blogCard.classList.add("blog-card");
         const img = document.createElement("img");
-        img.src = "article.urltoImage";
-        img.alt = "article.title";
+        img.src = article.urlToImage;
+        img.alt = article.title;
         const title = document.createElement("h2");
         title.textContent = article.title;
         const description = document.createElement("p");
         description.textContent = article.description;
+        blogCard.appendChild(img);
+        blogCard.appendChild(title);
         blogCard.appendChild(description);
-        blogCard.appendChild(img)
-        blogCard.appendChild(title)
         blogContainer.appendChild(blogCard)
     });
 }
