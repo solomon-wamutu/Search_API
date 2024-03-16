@@ -14,3 +14,15 @@ async function SearchRandomNews(){
         return[];
     }
 }
+
+async () => {
+    try{
+       const articles  = await SearchRandomNews();
+       console.log(articles);
+        
+       } 
+       catch(error){
+        console.error("Error fetching Random News",error);
+       }
+    }
+
