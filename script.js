@@ -6,8 +6,7 @@ async function SearchRandomNews(){
         const apiUrl = `https://newsapi.org/v2/everything?q=tesla&pageSize=10&apikey =${apikey}`;
         const response = await fetch(apiUrl);
         const data = await response.json();
-        console.log(data)
-
+        return data.articles
     }
     catch(error){
         console.error("Error searching Random News",error);
@@ -15,7 +14,7 @@ async function SearchRandomNews(){
     }
 }
 
-async () => {
+(async () => {
     try{
        const articles  = await SearchRandomNews();
        displayBlogs(articles);
@@ -24,7 +23,7 @@ async () => {
        catch(error){
         console.error("Error fetching Random News",error);
        }
-    }
+    })();
 
 function displayBlogs(articles){
     blogContainer.innerHTML = "";
