@@ -3,7 +3,7 @@ const blogContainer = document.getElementById("blog-container");
 
 async function SearchRandomNews(){
     try{
-        const apiUrl = `https://newsapi.org/v2/everything?q=tesla&pageSize=10&apikey =${apikey}`;
+        const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&pageSize=10&apikey=${apikey}`;
         const response = await fetch(apiUrl);
         const data = await response.json();
         return data.articles
@@ -27,18 +27,18 @@ async function SearchRandomNews(){
 
 function displayBlogs(articles){
     blogContainer.innerHTML = "";
-    articles.forEach((articles) => {
+    articles.forEach((article) => {
         const blogCard = document.createElement("div");
         blogCard.classList.add("blog-card");
         const img = document.createElement("img");
         img.src = "article.urltoImage";
         img.alt = "article.title";
         const title = document.createElement("h2");
-        title.textContent = articles.title;
+        title.textContent = article.title;
         const description = document.createElement("p");
-        description.textContent = articles.description;
+        description.textContent = article.description;
         blogCard.appendChild(description);
-        blogCard.appendChild(h2)
+        blogCard.appendChild(img)
         blogCard.appendChild(title)
         blogContainer.appendChild(blogCard)
     });
