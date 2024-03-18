@@ -1,5 +1,8 @@
 const apikey = "594249d28be6426b817a234aa0001e72";
 const blogContainer = document.getElementById("blog-container");
+const searchInput = document.getElementById("search-input");
+const searchButton = document.getElementById("search-btn");
+
 
 async function SearchRandomNews(){
     try{
@@ -38,11 +41,20 @@ function displayBlogs(articles){
         const textTracated  = article.title.length > 30 ? article.title.slice(0,30) + '.....' : article.title;
         title.textContent = textTracated;
         const description = document.createElement("p");
-        const descTrancated = article.description.length > 120 ? article.description.slice(0,120) + '.....' : article.description;
-        description.textContent = descTrancated;
+        // const descTrancated = (article.description.length > 120 ? article.description.slice(0,120) + '.....' : article.description):'';
+                const descTruncated = article.description
+                  ? article.description.length > 120
+                    ? article.description.slice(0, 120) + "....."
+                    : article.description
+                  : "";
+
+        description.textContent = descTruncated;
         blogCard.appendChild(img);
         blogCard.appendChild(title);
         blogCard.appendChild(description);
+        blogCard.addEventListener('click', () => {
+            window.open(article.url, "_blank");
+        })
         blogContainer.appendChild(blogCard)
     });
 }
