@@ -16,7 +16,17 @@ async function SearchRandomNews(){
         return[];
     }
 }
-
+searchButton.addEventListener("click", async () => {
+    const querry  = searchInput.value.trim();
+    if(querry !== ""){
+        try{
+            const articles = await fetchewsQuerry(querry);
+        }
+        catch(error){
+            console.log("Error searching from the query", error);
+        }
+    }
+})
 
 (async () => {
     try{
