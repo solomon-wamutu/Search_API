@@ -1,7 +1,7 @@
 const apikey = "594249d28be6426b817a234aa0001e72";
 const blogContainer = document.getElementById("blog-container");
 const searchInput = document.getElementById("search-input");
-const searchButton = document.getElementById("search-btn");
+const searchButton = document.getElementById("search-button");
 
 
 async function SearchRandomNews(){
@@ -67,4 +67,18 @@ function displayBlogs(articles){
         })
         blogContainer.appendChild(blogCard)
     });
+}
+
+
+async function fetchewsQuerry(querry){
+     try{
+        const apiUrl = `https://newsapi.org/v2/everything?q=${querry}&pageSize=10&apikey=${apikey}`;
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        return data.articles
+    }
+    catch(error){
+        console.error("Error searching Random News querry",error);
+        return[];
+    }
 }
